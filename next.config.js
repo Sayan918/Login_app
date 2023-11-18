@@ -1,4 +1,23 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    experimental: {
+      appDir: true,
+      serverComponentsExternalPackages: ["mongoose"],
+    },
+    images: {
+      domains: ['lh3.googleusercontent.com'],
+    },
+    webpack(config ,{ isServer }) {
+       
 
-module.exports = nextConfig
+        
+      config.experiments = {
+        ...config.experiments,
+        topLevelAwait: true,
+      }
+      return config
+    }
+   
+  }
+  
+  module.exports = nextConfig
